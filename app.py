@@ -1,5 +1,5 @@
 import json
-import datetime
+from datetime import datetime
 from time import strftime
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher, ContentType
@@ -55,7 +55,7 @@ current_articles = []
 reminders = []
 oldIndex = 0;
 dadjoke_counter = 0
-boot_datetime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+boot_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 
 switch_url = "http://www.nintendo.nl"
