@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from time import strftime
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher, ContentType
 from aiogram.utils import executor
@@ -54,6 +55,7 @@ current_articles = []
 reminders = []
 oldIndex = 0;
 dadjoke_counter = 0
+boot_datetime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 
 switch_url = "http://www.nintendo.nl"
@@ -100,7 +102,11 @@ help_text = """The following commands are available*:
 
 		
 ####HANDLERS
-		
+	
+@dp.message_handler(commands=['lastboot'])
+async def lastboot_msg(message: types.Message):
+	await message.reply('The bot was last booted on:' + str(boot_datetime))
+	
 @dp.message_handler(commands=['minecraft', 'floop'])
 async def mc_server(message: types.Message):
 	log(message)
