@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+import datetime
 from time import strftime
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher, ContentType
