@@ -391,7 +391,7 @@ async def voice_to_text(message: types.Message):
 		h = { 'Content-Type': 'audio/ogg'}
 		response = requests.post("https://stream.watsonplatform.net/speech-to-text/api/v1/recognize", auth=auth_stt, headers = h, data = voice_rec)
 		result = response.json()['results'][0]['alternatives'][0]
-		await message.reply(message['from']['username'] + "(STT: " + str(100 * round(result['confidence'],2)) + "%): " + "\"" + result['transcript'] + "\"")
+		await message.reply(message['from']['username'] + "(STT: " + str(round(100 * result['confidence'])) + "%): " + "\"" + result['transcript'] + "\"")
 	except:
 		await message.reply("Something went wrong, please try again.\nTry to speak clearly, reduce environment noise and have speech start at the start of the rcording.");
 		
