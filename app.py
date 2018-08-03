@@ -105,7 +105,7 @@ help_text = """The following commands are available*:
 	
 @dp.message_handler(commands=['lastboot'])
 async def lastboot_msg(message: types.Message):
-	await message.reply('The bot was last booted on:' + str(boot_datetime))
+	await message.reply('The bot was last booted on: ' + str(boot_datetime))
 	
 @dp.message_handler(commands=['minecraft', 'floop'])
 async def mc_server(message: types.Message):
