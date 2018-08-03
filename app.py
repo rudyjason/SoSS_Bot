@@ -250,7 +250,7 @@ async def bad_bot_msg(message: types.Message):
 ............\..............( 
 ..............\.............\...""")
 	
-@dp.message_handler(commands=['remind'])
+@dp.message_handler(commands=['remind', 'reminder'])
 async def schedule_reminder(message: types.Message):
 	log(message)
 	global sch
