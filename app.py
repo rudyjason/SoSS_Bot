@@ -448,7 +448,8 @@ async def currency(message: types.Message):
 	targetCur = args[1].upper()
 	amount = args[2]
 	try:
-		response = requests.get("http://data.fixer.io/api/latest?access_key=23d386d4ab1491d137c806eca41b0f55&base=" + baseCur + "&symbols=" + targetCur)
+		#response = requests.get("http://data.fixer.io/api/latest?access_key=23d386d4ab1491d137c806eca41b0f55&base=" + baseCur + "&symbols=" + targetCur)
+		response = requests.get("https://api.exchangeratesapi.io/latest?base=" + baseCur + "&symbols=" + targetCur)		
 		rate = response.json()['rates'][targetCur]
 		await message.reply(baseCur + str(amount) + " x " + str(rate) + " = " + targetCur + str(round(int(amount) * rate, 2)))
 	except:
