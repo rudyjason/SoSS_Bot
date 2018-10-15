@@ -385,6 +385,19 @@ async def steam_games(message: types.Message):
 	kb = create_inline_keyboard(titles, ids)
 	await bot.send_message(message['chat']['id'], "/steam " + args + "\nWhich of these games do you mean?", reply_markup = kb)	
 	
+@dp.message_handler(commands=['pastebin'])
+async def pastebin(message: types.Message):
+	log(message)
+	args = message.get_args()
+	response = requests.get("http://store.steampowered.com/api/storesearch/?term=" + args)
+	games = response.json()['items']
+	titles = create_data_list(games, 'name')#create_titles_list(games)
+	ids = create_data_list(games, 'id')#create_fs_id_list(games)		
+	kb = create_inline_keyboard(titles, ids)
+	await bot.send_message(message['chat']['id'], "/steam " + args + "\nWhich of these games do you mean?", reply_markup = kb)	
+	
+	
+	
 #https://stream.watsonplatform.net/speech-to-text/api
 #https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed
 @dp.message_handler(content_types=ContentType.VOICE)
