@@ -115,7 +115,7 @@ async def mc_server(message: types.Message):
 		status = server.status()
 		print('Got status')
 		print(status.players.online)
-		await message.reply("Floop is online and has " + str(status.players.online) + " players currently playing.")
+		await message.reply("Floop is online and has " + str(status.players.online) + " player(s) currently playing.")
 	except e:
 		print("Something went wrong, Floop may be offline.")
 		await message.reply("Something went wrong, Floop may be offline.")	
@@ -123,7 +123,9 @@ async def mc_server(message: types.Message):
 @dp.message_handler(commands=['help'])
 async def help_msg(message: types.Message):
 	log(message)
-	await bot.send_message(message['chat']['id'], help_text)
+	the_message = await bot.send_message(message['chat']['id'], help_text)
+	time.sleep(20)
+	await the_message.delete()
 	
 @dp.message_handler(commands=['amiibo'])
 async def find_amiibo(message: types.Message):
